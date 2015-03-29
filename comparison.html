@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>比赛</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new.css" rel="stylesheet">
+    <!-- Highchart图表JS库 -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts-more.js"></script>
+    <script type="text/javascript" src="js/highcharts/modules/exporting.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-sm" href="main.html">NBA数据分析网</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="main.html">球员</a></li>
+            <li><a href="team.html">球队</a></li>
+            <li><a href="game.html">比赛</a></li>
+            <li class="active"><a href="comparison.html">球员对比</a></li>
+            <li><a href="comparison_area.html">分区对比</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group form-group-sm">
+              <input type="text" class="form-control" placeholder="搜索球员或者球队">
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right hidden-sm">
+            <li><a href="/about/" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'about'])">管理员登录</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- 导航栏 -->
+	
+	<!-- 选择球员 -->
+    <div class="bs-docs-header" id="content" style="background-image:url('images/compare_player.jpg');">
+      <div class="container">
+      	    <div class="row">
+      	    	<div class="col-md-2"></div>
+      	    	<div class="col-md-8">
+      	    		<div class="col-md-4 compareinput">
+      	    			<form  role="form">
+						    <div class="input-group search">
+						      <input type="text" class="form-control" placeholder="请输入球员姓名">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button">
+						        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						        </button>
+						      </span>
+						    </div><!-- /input-group -->
+						</form>
+						<img class="img-rounded" src="PlayersBigAvatar/jordon.jpg" />
+      	    		</div>
+      	    		<div class="col-md-4 compare">
+      	    			<img src="images/vs.png" />
+      	    			<button type="button" class="btn btn-danger btn-lg">开始对比</button>
+      	    		</div>
+      	    		<div class="col-md-4 compareinput">
+      	    			<form  role="form">
+						    <div class="input-group search">
+						      <input type="text" class="form-control" placeholder="请输入球员姓名">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button">
+						        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						        </button>
+						      </span>
+						    </div><!-- /input-group -->
+						</form>
+						<img class="img-rounded" src="PlayersBigAvatar/kobe.jpg" />
+      	    		</div>
+      	    	</div>
+      	    	<div class="col-md-2"></div>
+      	    </div>
+      	</div>
+  	</div>
+
+  	<!-- 对比数据 -->
+	<div class="container bs-docs-container comparedata">
+      	<div class="row">
+          	<div class="col-md-12" role="main">
+          		<div class="bs-docs-section">
+					<h2 class="page-header">数据对比</h2>
+					<div id="data-container" style="min-width: 260px; height: 400px; margin: 0 auto">
+              		</div>
+          		</div>
+            	<div class="bs-docs-section">
+	              	<h2 class="page-header">交手数据</h2>
+	              	<table class="table table-bordered table-striped table-hover" style="width: 100%;">
+						<thead>
+							<tr>
+								<th>场均交手数据(共8场)</th>
+								<th>胜负次数</th>
+								<th>时间</th>
+								<th>投篮</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>三分</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>罚球</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>篮板</th>
+								<th>前场</th>
+								<th>后场</th>
+								<th>助攻</th>
+								<th>抢断</th>
+								<th>盖帽</th>
+								<th>失误</th>
+								<th>犯规</th>
+								<th>得分</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>迈克尔-乔丹</a></td>
+								<td>3胜 5负</td>
+								<td>35.4</td>
+								<td>43.6%</td>
+								<td>8.9</td>
+								<td>20.4</td>
+								<td>30%</td>
+								<td>0.4</td>
+								<td>1.3</td>
+								<td>75%</td>
+								<td>6.4</td>
+								<td>8.5</td>
+								<td>4.3</td>
+								<td>1</td>
+								<td>3.3</td>
+								<td>3.6</td>
+								<td>1.1</td>
+								<td>0.5</td>
+								<td>2</td>
+								<td>1.8</td>
+								<td>24.5</td>
+							</tr>
+							<tr>
+								<td>科比-布莱恩特</a></td>
+								<td>5胜 3负</td>
+								<td>29.1</td>
+								<td>46.6%</td>
+								<td>7.6</td>
+								<td>16.4</td>
+								<td>55.2%</td>
+								<td>2</td>
+								<td>3.6</td>
+								<td>75.9%</td>
+								<td>5.5</td>
+								<td>7.3</td>
+								<td>4.4</td>
+								<td>0.6</td>
+								<td>3.8</td>
+								<td>3.9</td>
+								<td>0.9</td>
+								<td>0.6</td>
+								<td>1.5</td>
+								<td>3.1</td>
+								<td>22.8</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<!-- 选择场次 -->
+					<div class="btn-group">
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					    选择场次 <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu">
+					    <li><a href="#">96-97 常规赛 公牛129-123湖人</a></li>
+					    <li><a href="#">96-97 常规赛 公牛90-106湖人</a></li>
+					    <li><a href="#">97-98 常规赛 公牛104-83湖人</a></li>
+					    <li><a href="#">97-98 常规赛 公牛87-112湖人</a></li>
+					    <li><a href="#">01-02 常规赛 奇才94-103湖人</a></li>
+					  </ul>
+					</div>
+					<table class="table table-bordered table-striped table-hover" style="width: 100%;">
+						<thead>
+							<tr>
+								<th>公牛129-123湖人</th>
+								<th>球队</th>
+								<th>时间</th>
+								<th>投篮</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>三分</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>罚球</th>
+								<th>命中</th>
+								<th>出手</th>
+								<th>篮板</th>
+								<th>前场</th>
+								<th>后场</th>
+								<th>助攻</th>
+								<th>抢断</th>
+								<th>盖帽</th>
+								<th>失误</th>
+								<th>犯规</th>
+								<th>得分</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>迈克尔-乔丹</a></td>
+								<td>芝加哥公牛</td>
+								<td>47</td>
+								<td>31.3%</td>
+								<td>10</td>
+								<td>32</td>
+								<td>0.0%</td>
+								<td>0</td>
+								<td>2</td>
+								<td>71.4%</td>
+								<td>10</td>
+								<td>14</td>
+								<td>9</td>
+								<td>5</td>
+								<td>4</td>
+								<td>3</td>
+								<td>1</td>
+								<td>1</td>
+								<td>2</td>
+								<td>2</td>
+								<td>30</td>
+							</tr>
+							<tr>
+								<td>科比-布莱恩特</a></td>
+								<td>洛杉矶湖人</td>
+								<td>10</td>
+								<td>40.0%</td>
+								<td>2</td>
+								<td>5</td>
+								<td>50%</td>
+								<td>1</td>
+								<td>2</td>
+								<td>0.0%</td>
+								<td>0</td>
+								<td>2</td>
+								<td>1</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>1</td>
+								<td>0</td>
+								<td>1</td>
+								<td>5</td>
+							</tr>
+						</tbody>
+					</table>
+            	</div>
+        	</div>
+       	</div>
+    </div>
+
+    <!-- Footer
+	================================================== -->
+	<footer class="bs-docs-footer" role="contentinfo">
+	  <div class="container">
+	    <p>All content copyright NBA数据分析网 © 2015 • All rights reserved.
+	    Proudly published with NBA Data Analysis</p>
+	    <p>本项目源码采用 <a href="http://v3.bootcss.com/" target="_blank">Bootstrap</a> 和 <a href="http://jquery.com/">jQuery</a> 开源框架.主要数据来源自<a href="http://creativecommons.org/licenses/by/3.0/">StatNBA数据</a></p>
+	    <ul class="bs-docs-footer-links text-muted">
+	      <li>当前版本： v1.0.0</li>
+	      <li>&middot;</li>
+	      <li><a href="nba.hupu.com">虎扑·篮球</a></li>
+	      <li>&middot;</li>
+	      <li><a href="http://sports.sina.com.cn/nba/">新浪NBA</a></li>
+	      <li>&middot;</li>
+	      <li><a href="http://china.nba.com/">NBA中国</a></li>
+	      <li>&middot;</li>
+	      <li><a href="../about/">关于</a></li>
+	    </ul>
+	  </div>
+	</footer>
+
+
+	<!-- HighchartJS -->
+	<script type="text/javascript">
+	// 蛛网图
+      $(function () {
+          $('#data-container').highcharts({
+              chart: {
+                  polar: true,
+                  type: 'line'
+              },
+              
+              title: {
+                  text: '',
+                  x: 0
+              },
+              pane: {
+                size: '80%'
+              },
+              // 去掉额外元素
+              legend: {
+                enabled: true
+              },
+              exporting: {
+                enabled: false
+              },
+              credits: {
+                enabled: false
+              },
+              xAxis: {
+                  categories: ['场均得分', '场均助攻', '场均篮板', '场均抢断', '场均盖帽', '场均失误', 'PER', '命中率'],
+                  tickmarkPlacement: 'on',
+                  lineWidth: 0
+              },
+                  
+              yAxis: [{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 1,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 1,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },{
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              }],
+              
+              tooltip: {
+                shared: true,
+                valueDecimals:0,
+                pointFormat: '{series.name}<b>{point.y}</b><br/>'
+              },
+              
+              
+              series: [{
+                  name: '迈克尔-乔丹',
+                  data: [24.5*100/22.8,3.6*100/3.9,4.3*100/4.4,1.1*100/0.9,0.5*100/0.6,2*100/1.5,14*100/18,43.6*100/46.6],
+                  pointPlacement: 'on'
+              },{
+                  name: '科比-布莱恩特',
+                  data: [22.8*100/24.5,3.9*100/3.6,4.4*100/4.3,0.9*100/1.1,0.6*100/0.5,1.5*100/2,18*100/14,46.6*100/43.3],
+                  pointPlacement: 'on'
+              }]             
+          });
+      });
+	</script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+</body>
+</html>

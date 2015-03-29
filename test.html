@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px;width:auto;"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('main')); 
+        
+        var option = {
+    title : {
+        text: '',
+        subtext: '',
+        x:'right',
+        y:'bottom'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: '{a} : {b}'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            restore : {show: true},
+            magicType: {show: false, type: ['force', 'chord']},
+            saveAsImage : {show: false}
+        }
+    },
+    legend: {
+        x: 'center',
+        data:['首发','替补']
+    },
+    series : [
+        {
+            type:'force',
+            ribbonType: false,
+            name : "压力动态",
+            categories : [
+                {
+                    name: '核心',
+                    itemStyle: {
+                        normal: {
+                            color : '#ff7f50'
+                        }
+                    }
+                },
+                {
+                    name: '首发',
+                    itemStyle: {
+                        normal: {
+                            color : '#87cdfa'
+                        }
+                    }
+                },
+                {
+                    name:'替补',
+                    itemStyle: {
+                        normal: {
+                            color : '#9acd32'
+                        }
+                    }
+                }
+            ],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        textStyle: {
+                            color: '#800080'
+                        }
+                    },
+                    nodeStyle : {
+                        brushType : 'both',
+                        strokeColor : 'rgba(255,215,0,0.4)',
+                        lineWidth : 8
+                    }
+                },
+                emphasis: {
+                    label: {
+                        show: false
+                        // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                    },
+                    nodeStyle : {
+                        r: 100
+                    },
+                    linkStyle : {}
+                }
+            },
+            minRadius : 15,
+            maxRadius : 30,
+            density : 0.05,
+            attractiveness: 1.8,
+            nodes:[
+                {category:0, name: '科比', value : 2350,initial:[700,200],fixX:true,fixY:true,draggable:false},
+                {category:1, name: '纳什',value : 970,initial:[650,150],fixX:true,fixY:true,draggable:true},
+                {category:1, name: '林书豪',value : 837,initial:[750,150],fixX:true,fixY:true,draggable:true},
+                {category:1, name: '尼克·杨',value : 483,initial:[650,250],fixX:true,fixY:true,draggable:true},
+                {category:1, name: '布泽尔',value : 325,initial:[750,250],fixX:true,fixY:true,draggable:true},
+                {category:2, name: '兰德尔',value : 299},
+                {category:2, name: '艾灵顿',value : 277,initial:[500,200],fixX:true,fixY:true,draggable:true},
+                {category:2, name: '凯利',value : 165},
+                {category:2, name: '普莱斯',value : 114},
+                {category:2, name: '戴维斯',value : 98,initial:[900,200],fixX:true,fixY:true,draggable:true},
+                {category:2, name: '萨克雷',value : 91},
+            ],
+            links : [
+                {source : 1, target : 0, weight : 4},
+                {source : 2, target : 0, weight : 4},
+                {source : 3, target : 0, weight : 4},
+                {source : 4, target : 0, weight : 4},
+                {source : 1, target : 2, weight : 2},
+                {source : 2, target : 3, weight : 2},
+                {source : 3, target : 4, weight : 2},
+                {source : 4, target : 1, weight : 2},
+                {source : 1, target : 5, weight : 1},
+                {source : 2, target : 10, weight : 1},
+                {source : 3, target : 7, weight : 1},
+                {source : 4, target : 8, weight : 1},
+                {source : 5, target : 6, weight : 1},
+                {source : 6, target : 7, weight : 1},
+                {source : 7, target : 8, weight : 1},
+                {source : 8, target : 9, weight : 1},
+                {source : 9, target : 10, weight : 1},
+                {source : 10, target : 5, weight : 1},
+            ],
+           
+        }
+    ]
+};
+
+        // 为echarts对象加载数据 
+        myChart.setOption(option); 
+
+    var ecConfig = echarts.config;
+    function eConsole(param) {
+        var mes = '【' + param.type + '】';
+        if (typeof param.seriesIndex != 'undefined') {
+            mes += '  seriesIndex : ' + param.seriesIndex;
+            mes += '  dataIndex : ' + param.dataIndex;
+        }
+
+        alert(mes);
+        console.log(param);
+    }     
+    myChart.on(ecConfig.EVENT.CLICK, eConsole);
+myChart.on(ecConfig.EVENT.DBLCLICK, eConsole);
+//myChart.on(ecConfig.EVENT.HOVER, eConsole);
+myChart.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+myChart.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+myChart.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+myChart.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+                    
+
+    </script>
+</body>

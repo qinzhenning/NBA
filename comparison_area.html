@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>比赛</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new.css" rel="stylesheet">
+    <!-- Highchart图表JS库 -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts-more.js"></script>
+    <script type="text/javascript" src="js/highcharts/modules/exporting.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-image:url('images/dark-wood-panels-pr.jpg');">
+    <!-- 导航栏 -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-sm" href="main.html">NBA数据分析网</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="main.html">球员</a></li>
+            <li><a href="team.html">球队</a></li>
+            <li><a href="game.html">比赛</a></li>
+            <li><a href="comparison.html">球员对比</a></li>
+            <li class="active"><a href="comparison_area.html">分区对比</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group form-group-sm">
+              <input type="text" class="form-control" placeholder="搜索球员或者球队">
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right hidden-sm">
+            <li><a href="/about/" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'about'])">管理员登录</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- 导航栏 -->
+
+	<div class="container bs-docs-container">
+      	<div class="row">
+      		<div class="col-md-1" role="main"></div>
+        	<div class="col-md-10 area" role="main">
+        		<div class="data-select">
+        			<a class="on" href="#">得分</a>
+        			<a href="#">失分</a>
+        			<a href="#">篮板</a>
+        			<a href="#">助攻</a>
+        			<a href="#">抢断</a>
+        			<a href="#">盖帽</a>
+        			<a href="#">失误</a>
+        			<a href="#">犯规</a>
+        		</div>
+    			<div id="data-container">
+   				</div>
+   			</div>
+			<div class="col-md-1" role="main"></div>
+   		</div>
+   	</div>
+
+	<script type="text/javascript">
+      $(document).ready(function() {
+      //首次配置
+      var options = {
+          chart: {
+          	backgroundColor: '#FCFFC5',
+            type:'line',
+            renderTo:'data-container'
+          },
+          title: {
+            text: '六大分区实力对比',
+            useHTML:true,
+            x: -20 //center
+          },
+          xAxis: {
+            gridLineWidth: 0,
+            categories: ['2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014'],
+            labels: {
+            	enabled:false,
+              style: {
+                color: '#000',
+                fontWeight: 'bold'
+              }
+            },
+            tickInterval:10,
+            startOnTick: false,
+          },
+          yAxis: {
+          	lineWidth:1,
+          	// 设置Y轴最小间隔
+          	minTickInterval:40,
+            title: {
+                text: ''
+            },
+            labels:{
+            	enabled:false,
+                // format:'{value}分'
+            }
+          },
+          // 去掉额外元素
+          legend: {
+            enabled: true,
+          },
+          exporting: {
+            enabled: false
+          },
+          credits: {
+            enabled: false
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b><br/>',
+            valueSuffix: ' 分',
+          },
+          series: [{
+              name: '东南分区',
+              data: [30,33,36,38,45,41,33,35,37,33,31,27,]
+          },{
+              name: '中央分区',
+              data: [40,41,45,42,41,47,44,49,47,55,43,41,]
+          },{
+              name: '大西洋分区',
+              data: [50,52,55,55,58,49,48,53,58,59,55,57,]
+          },{
+              name: '太平洋分区',
+              data: [60,61,62,62,62,58,64,65,68,79,78,80,]
+          },{
+              name: '西南分区',
+              data: [70,71,75,77,78,79,73,75,71,68,66,67]
+          },{
+              name: '西北分区',
+              data: [80,81,82,83,82,82,82,79,77,85,87,88]
+          }]
+        };
+      var chart = new Highcharts.Chart(options);
+
+      // var chart = $('#data-container').highcharts();
+        $("a").click(function(){
+          //为当前元素添加class:on
+          $(this).addClass("on");
+          // 遍历所有元素移除on
+          $(this).siblings().removeClass("on");
+          // 修改y轴单位
+          var measure = $(this).attr('measure');
+          options.yAxis.labels.format = '{value}'+measure;
+          // 修改提示单位
+          options.tooltip.valueSuffix = measure;
+          // 修改标题
+          var title = $(this).attr('tit');
+          options.title.text = title;
+          // 修改数据
+          var arr = $(this).attr('arr');
+          var array = arr.split(",");
+          var nums = [ ];
+          for (var i=0 ; i< array.length ; i++)
+          {
+              nums.push(parseInt(array[i]));
+          }
+          // chart.series[0].setData(nums);
+          options.series[0].data = nums;
+          // 重画
+          chart = new Highcharts.Chart(options);
+          // chart.series[0].update(null,true);
+        });
+    });
+
+
+    </script>
+	
+</body>
+</html>

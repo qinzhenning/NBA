@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>球员信息介绍</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new.css" rel="stylesheet">
+    <!-- Highchart图表JS库 -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts/highcharts-more.js"></script>
+    <script type="text/javascript" src="js/highcharts/modules/exporting.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-sm" href="main.html">NBA数据分析网</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="main.html">球员</a></li>
+            <li><a href="team.html">球队</a></li>
+            <li><a href="game.html">比赛</a></li>
+            <li><a href="comparison.html">球员对比</a></li>
+            <li><a href="comparison_area.html">分区对比</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group form-group-sm">
+              <input type="text" class="form-control" placeholder="搜索球员或者球队">
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right hidden-sm">
+            <li><a href="/about/" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'about'])">管理员登录</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- 导航栏 -->
+
+    <!-- 基本信息 -->
+    <div class="bs-docs-header" id="content">
+      <div class="container">
+        <h1>科比·布莱恩特 [ Kobe Bryant ]</h1>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="rounded" > <!-- 头像大小选择160*190 -->
+              <img src="PlayersBigAvatar/kobe.jpg" style="width:160px;height:190px;"alt="科比">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p>位置: G/F ( 24号 )</p>
+            <p>身高: 1.98米 / 6尺6</p>
+            <p>体重: 96公斤 / 212磅</p>
+            <p>生日: 1978-08-23</p>
+            <p>球队: <a href="TeamInfo.html">洛杉矶湖人</a></p>
+            <p>选秀: 1996年第一轮第 13 顺位</p>
+            <p>出生地: 美国</p>
+            <p>本赛季薪金: 2350万美元</p>
+            <p>合同: 2年4860万, 2013/11/25续签, 2014夏生效,2016年到期★合同包括15%交易保证金★拥有不可交易条款</p>
+            <p>主要奖项: <i>NBA最有价值球员、两届NBA总决赛最有价值球员、四届NBA全明星赛最有价值球员、五届NBA总冠军</i></p>
+          </div>
+          <!-- 技术统计 -->
+          <div class="col-md-4" >
+            <table class="table table-hover statistics">
+              <tr>
+                <td>技术统计</td>
+                <td>数值</td>
+                <td>联盟排名</td>
+              </tr>
+              <tr>
+                <td>场均得分</td>
+                <th>22.3</th>
+                <th>9</th>
+              </tr>
+              <tr>
+                <td>场均助攻</td>
+                <th>5.6</th>
+                <th>19</th>
+              </tr>
+              <tr>
+                <td>场均篮板</td>
+                <th>5.7</th>
+                <th>71</th>
+              </tr>
+              <tr>
+                <td>命中率</td>
+                <th>37.3%</th>
+                <th>118</th>
+              </tr>
+              <tr>
+                <td>三分命中率</td>
+                <th>29.3%</th>
+                <th>89</th>
+              </tr>
+              <tr>
+                <td>罚球命中率</td>
+                <th>81.3%</th>
+                <th>51</th>
+              </tr>
+              <tr>
+                <td>场均盖帽</td>
+                <th>0.20</th>
+                <th>190</th>
+              </tr>
+              <tr>
+                <td>场均抢断</td>
+                <th>1.34</th>
+                <th>40</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> <!-- 基本信息 -->
+  
+    <!-- 详细信息 -->
+    <div class="container bs-docs-container">
+      <div class="row">
+          <div class="col-md-10" role="main">
+            <div class="bs-docs-section">
+              <h2 id="Career" class="page-header solutionForFixBar">生涯表现</h2>
+              <!-- Highchart图表 -->
+              <div id="Career-container" style="min-width: 310px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+
+            <div class="bs-docs-section">
+              <h2 id="Offense" class="page-header solutionForFixBar">进攻能力</h2>
+              <!-- Highchart图表 -->
+              <div id="Offense-container" style="min-width: 310px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+
+            <div class="bs-docs-section">
+              <h2 id="Defend" class="page-header solutionForFixBar">防守能力</h2>
+              <!-- Highchart图表 -->
+              <div id="Defend-container" style="min-width: 310px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+
+            <div class="bs-docs-section">
+              <h2 id="Backup" class="page-header solutionForFixBar">策应能力</h2>
+              <!-- Highchart图表 -->
+              <div id="Backup-container" style="min-width: 310px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+
+            <div class="bs-docs-section">
+              <h2 id="Synthesis" class="page-header solutionForFixBar">综合能力</h2>
+              <!-- Highchart图表 -->
+              <div id="Synthesis-container" style="min-width: 260px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+
+            <div class="bs-docs-section">
+              <h2 id="Experience" class="page-header solutionForFixBar">生涯经历</h2>
+              <!-- Highchart图表 -->
+              <div id="Experience-container" style="min-width: 310px; height: 400px; margin: 0 auto">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+              <ul class="nav bs-docs-sidenav movingbar">
+                <li>
+                  <a href="#Career">生涯表现</a>
+                </li>
+                <li>
+                  <a href="#Offense">进攻能力</a>
+                </li>
+                <li>
+                  <a href="#Defend">防守能力</a>
+                </li>
+                <li>
+                  <a href="#Backup">策应能力</a>
+                </li>
+                <li>
+                  <a href="#Synthesis">综合能力</a>
+                </li>
+                <li>
+                  <a href="#Experience">生涯经历</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+      </div>
+    </div> <!-- 详细信息 -->
+    
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <p>All content copyright NBA数据分析网 © 2015 • All rights reserved.
+    Proudly published with NBA Data Analysis</p>
+    <p>本项目源码采用 <a href="http://v3.bootcss.com/" target="_blank">Bootstrap</a> 和 <a href="http://jquery.com/">jQuery</a> 开源框架.主要数据来源自<a href="http://creativecommons.org/licenses/by/3.0/">StatNBA数据</a></p>
+    <ul class="bs-docs-footer-links text-muted">
+      <li>当前版本： v1.0.0</li>
+      <li>&middot;</li>
+      <li><a href="nba.hupu.com">虎扑·篮球</a></li>
+      <li>&middot;</li>
+      <li><a href="http://sports.sina.com.cn/nba/">新浪NBA</a></li>
+      <li>&middot;</li>
+      <li><a href="http://china.nba.com/">NBA中国</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">关于</a></li>
+    </ul>
+  </div>
+</footer>
+
+    <script type="text/javascript"> 
+      // 生涯表现
+      $(function () {
+          $('#Career-container').highcharts({
+              chart: {
+                  type: 'line'
+              },
+              title: {
+                  text: '职业生涯常规赛得分变化趋势'
+              },
+              subtitle: {
+                  text: ''
+              },
+              xAxis: {
+                  categories: ['1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014']
+              },
+              yAxis: {
+                  title: {
+                      text: ''
+                  }
+              },
+              legend: {
+                  enabled: false
+              },
+              exporting: {
+                enabled: false
+              },
+              credits: {
+                enabled: false
+              },
+              tooltip: {
+                  enabled: false,
+                  formatter: function() {
+                      return '<b>'+ this.series.name +'</b><br/>'+this.x +': '+ this.y +'°C';
+                  }
+              },
+              plotOptions: {
+                  line: {
+                      dataLabels: {
+                          enabled: true
+                      },
+                      enableMouseTracking: false
+                  }
+              },
+              series: [{
+                  name: '科比',
+                  data: [7.6,15.4,19.9,22.5,28.5,25.2,30.0,24.0,27.6,35.4,31.6,28.3,26.8,27.0,25.3,27.9,27.3,13.8,22.3]
+              }]
+          });
+      });     
+      // 进攻能力
+      $(function () {
+        $('#Offense-container').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: '进攻能力评分'
+            },
+            legend: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            xAxis: {
+                categories: ['真实命中率','投篮效率','进攻篮板率','使用率','进攻效率','失误率',],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '能力评分(100)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y} 分</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [50, 50, 35, 90, 80, 20],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+      });
+      // 防守能力
+      $(function () {
+        $('#Defend-container').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: '防守能力评分'
+            },
+            legend: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            xAxis: {
+                categories: ['防守篮板率','抢断率','盖帽率','防守效率',],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '能力评分(100)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y} 分</b>',
+            },
+            series: [{
+                color: Highcharts.getOptions().colors[3],
+                name: 'Population',
+                data: [80, 60, 70, 90],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                  }
+              }]
+          });
+      });
+      // 策应能力
+      $(function () {
+          $('#Backup-container').highcharts({
+              chart: {
+                  type: 'column',
+                  margin: [ 50, 50, 100, 80]
+              },
+              title: {
+                  text: '策应能力评分'
+              },
+              legend: {
+                enabled: false
+              },
+              exporting: {
+                enabled: false
+              },
+              credits: {
+                enabled: false
+              },
+              xAxis: {
+                  categories: [
+                      '助攻率',
+                      '助攻失误比',
+                  ],
+                  labels: {
+                      rotation: -45,
+                      align: 'right',
+                      style: {
+                          fontSize: '13px',
+                          fontFamily: 'Verdana, sans-serif'
+                      }
+                  }
+              },
+              yAxis: {
+                  min: 0,
+                  title: {
+                      text: '能力评分(100)'
+                  }
+              },
+              legend: {
+                  enabled: false
+              },
+              tooltip: {
+                  pointFormat: '<b>{point.y} 分</b>',
+              },
+              series: [{
+                  color: Highcharts.getOptions().colors[4],
+                  name: 'Population',
+                  data: [60, 70],
+                  dataLabels: {
+                      enabled: true,
+                      rotation: -90,
+                      color: '#FFFFFF',
+                      align: 'right',
+                      x: 4,
+                      y: 10,
+                      style: {
+                          fontSize: '13px',
+                          fontFamily: 'Verdana, sans-serif',
+                          textShadow: '0 0 3px black'
+                      }
+                  }
+              }]
+          });
+      }); 
+      // 综合能力
+      $(function () {
+          $('#Synthesis-container').highcharts({
+              chart: {
+                  polar: true,
+                  type: 'line'
+              },
+              
+              title: {
+                  text: '综合能力分析',
+                  x: 0
+              },
+              pane: {
+                size: '80%'
+              },
+              // 去掉额外元素
+              legend: {
+                enabled: false
+              },
+              exporting: {
+                enabled: false
+              },
+              credits: {
+                enabled: false
+              },
+              xAxis: {
+                  categories: ['WS', 'PER', '进攻能力', '防守能力', '策应能力'],
+                  tickmarkPlacement: 'on',
+                  lineWidth: 0
+              },
+                  
+              yAxis: {
+                  gridLineInterpolation: 'polygon',
+                  lineWidth: 0,
+                  min: 0
+              },
+              
+              tooltip: {
+                shared: true,
+                  pointFormat: '<span style="color:{series.color}"><b>{point.y} 分</b><br/>'
+              },
+              
+              
+              series: [{
+                  name: '科比',
+                  data: [80, 90, 90, 70, 60],
+                  pointPlacement: 'on'
+              }]             
+          });
+      });
+      // 生涯重要经历
+      $(function () {
+          $('#Experience-container').highcharts({
+              chart: {
+                  type: 'spline'
+              },
+              title: {
+                  text: '生涯重要经历'
+              },
+              subtitle: {
+                  text: ''
+              },
+              // 去掉额外元素
+            legend: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+              xAxis: {
+                  categories: ['1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014']
+              },
+              yAxis: {
+                  title: {
+                      text: '重大经历'
+                  },
+                  labels:{
+                    enabled: false
+                  }
+              },
+              tooltip: {
+                  enabled: true,
+                  formatter: function() {
+                      return '<b>'+ this.x +'</b><br/>场均得分: '+ this.y +'分';
+                  }
+              },
+              plotOptions: {
+                  spline: {
+                      dataLabels: {
+                      formatter: function() {
+                          if(this.x == 1996)
+                            return '<b>进入联盟</b>';
+                          else if(this.x == 1997)
+                            return '<b>NBA史上最年轻的扣篮大赛冠军</b>';
+                          else if(this.x == 1998)
+                            return '<b>NBA史上最年轻的全明星赛首发球员</b>';
+                          else if(this.x == 2000)
+                            return '<b>职业生涯第一个总冠军</b>';
+                          else if(this.x == 2001)
+                            return '<b>第二个冠军</b>';
+                          else if(this.x == 2002)
+                            return '<b>完成三连冠</b>';
+                          else if(this.x == 2006)
+                            return '<b>单场砍下81分,<br/>球衣号码由8号改为24号</b>';
+                          else if(this.x == 2007)
+                            return '<b>单赛季砍下10次50+</b>';
+                          else if(this.x == 2008)
+                            return '<b>第一次获得NBA最有价值球员</b>';
+                          else if(this.x == 2009)
+                            return '<b><br/>夺得总冠军,并获得总决赛最有价值球员</b>';
+                          else if(this.x == 2010)
+                            return '<b>第一次获得NBA最有价值球员</b>';
+                          else
+                            return '';
+                            //return '<b>'+ this.series.name +'</b><br/>'+this.x +': '+ this.y +'°C';
+                      },
+                          enabled: true
+                      },
+                      enableMouseTracking: true
+                  }
+              },
+              series: [{
+                  name: '科比',
+                  data: [7.6,15.4,19.9,22.5,28.5,25.2,30.0,24.0,27.6,35.4,31.6,28.3,26.8,27.0,25.3,27.9,27.3,13.8,22.3]
+              }]
+          });
+      });
+    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+  </body>
+</html>
