@@ -1,0 +1,91 @@
+/*轮播*/
+.carousel-caption{position:absolute;left:0;right:0;bottom:0;padding:15px;background:#333333;background:rgba(0, 0, 0, 0.75);}
+.carousel-caption h4,.carousel-caption p{color:#ffffff;line-height:20px;}
+.carousel-caption h4{margin:0 0 5px;}
+.carousel-caption p{margin-bottom:0;}
+.carousel-indicators {bottom: -10px}
+.carousel{margin-top:51px;}
+/*球员列表*/
+.bs-glyphicons{margin:0 -10px 20px;overflow:hidden}
+.bs-glyphicons-list{padding-left:0;list-style:none}
+.bs-glyphicons li{float:left;width:12.5%;height:165px;padding:10px;font-size:12px;line-height:1.4;text-align:center;background-color:#edebeb;border:1px solid #fff}
+.bs-glyphicons .glyphicon{margin-top:5px;margin-bottom:10px;font-size:24px}
+.bs-glyphicons .glyphicon-class{display:block;text-align:center;word-wrap:break-word}
+.bs-glyphicons li:hover{color:#fff;background-color:#563d7c}@media (min-width:768px){.bs-glyphicons{margin-right:0;margin-left:0}
+.player{margin-right:100px;margin-left:100px;margin-top:10px;background-color: #9b0000}
+.thumbnail{margin:5px;}
+/*球员基本信息*/
+.bs-docs-header{position:relative;padding:30px 15px;color:#cdbfe3;text-align:center;text-shadow:0 1px 0 rgba(0,0,0,.1);background-color:#6f5499;background-image:-webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499));background-image:-webkit-linear-gradient(top,#563d7c 0,#6f5499 100%);background-image:-o-linear-gradient(top,#563d7c 0,#6f5499 100%);background-image:linear-gradient(to bottom,#563d7c 0,#6f5499 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);background-repeat:repeat-x}.bs-docs-masthead .bs-docs-booticon{margin:0 auto 30px}.bs-docs-masthead h1{font-weight:300;line-height:1;color:#fff}.bs-docs-masthead .lead{margin:0 auto 30px;font-size:20px;color:#fff}.bs-docs-masthead .version{margin-top:-15px;margin-bottom:30px;color:#9783b9}.bs-docs-masthead .btn{width:100%;padding:15px 30px;font-size:20px}@media (min-width:480px){.bs-docs-masthead .btn{width:auto}}@media (min-width:768px){.bs-docs-masthead{padding:80px 0}.bs-docs-masthead h1{font-size:60px}.bs-docs-masthead .lead{font-size:24px}}@media (min-width:992px){.bs-docs-masthead .lead{width:80%;font-size:30px}}
+.bs-docs-header{margin-top:51px;font-size:20px}
+.bs-docs-header h1{margin-top:-30px;color:#fff}
+.bs-docs-header p{margin-bottom:0;font-weight:300;line-height:1.6;font-size:18px;}
+.bs-docs-header .container{position:relative}@media (min-width:768px){.bs-docs-header{padding-top:50px;padding-bottom:20px;font-size:24px;text-align:left}
+.bs-docs-header h1{font-size:30px;line-height:1}}@media (min-width:992px){.bs-docs-header h1,.bs-docs-header p{margin-right:40px}}
+.bs-docs-header a{color: yellow;text-decoration:underline}
+.bs-docs-header i{color:yellow;}
+.solutionForFixBar {padding-top: 60px;}
+.bs-docs-section {margin-top:-40px; }
+/*技术统计*/
+.statistics{font-size: 15px;background-color:#edebeb;color:#282828;}
+/*侧边栏*/
+.bs-docs-sidebar.affix{position:static}@media (min-width:768px){.bs-docs-sidebar{padding-left:20px}}.bs-docs-sidenav{margin-top:20px;margin-bottom:20px}.bs-docs-sidebar .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.bs-docs-sidebar .nav>li>a:focus,.bs-docs-sidebar .nav>li>a:hover{padding-left:19px;color:#563d7c;text-decoration:none;background-color:transparent;border-left:1px solid #563d7c}.bs-docs-sidebar .nav>.active:focus>a,.bs-docs-sidebar .nav>.active:hover>a,.bs-docs-sidebar .nav>.active>a{padding-left:18px;font-weight:700;color:#563d7c;background-color:transparent;border-left:2px solid #563d7c}.bs-docs-sidebar .nav .nav{display:none;padding-bottom:10px}.bs-docs-sidebar .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.bs-docs-sidebar .nav .nav>li>a:focus,.bs-docs-sidebar .nav .nav>li>a:hover{padding-left:29px}.bs-docs-sidebar .nav .nav>.active:focus>a,.bs-docs-sidebar .nav .nav>.active:hover>a,.bs-docs-sidebar .nav .nav>.active>a{padding-left:28px;font-weight:500}.back-to-top,.bs-docs-theme-toggle{display:none;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:hover,.bs-docs-theme-toggle:hover{color:#563d7c;text-decoration:none}.bs-docs-theme-toggle{margin-top:0}@media (min-width:768px){.back-to-top,.bs-docs-theme-toggle{display:block}}@media (min-width:992px){.bs-docs-sidebar .nav>.active>ul{display:block}.bs-docs-sidebar.affix,.bs-docs-sidebar.affix-bottom{width:213px}.bs-docs-sidebar.affix{position:fixed;top:20px}.bs-docs-sidebar.affix-bottom{position:absolute}.bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav{margin-top:0;margin-bottom:0}}@media (min-width:1200px){.bs-docs-sidebar.affix,.bs-docs-sidebar.affix-bottom{width:263px}}
+.movingbar{padding-top:50px;}
+/*页脚*/
+.bs-docs-footer{padding-top:40px;padding-bottom:40px;margin-top:100px;color:#767676;text-align:center;border-top:1px solid #e5e5e5}.bs-docs-footer-links{padding-left:0;margin-top:20px}.bs-docs-footer-links li{display:inline;padding:0 2px}.bs-docs-footer-links li:first-child{padding-left:0}@media (min-width:768px){.bs-docs-footer p{margin-bottom:0}}
+/*球队地图*/
+#map-container {height: 760px; min-width: 310px;  margin: 50px 0 0 0px;background-image: url('../images/dark-wood-panels-pr.jpg');}
+/*球队数据*/
+.data-select {}
+.data-select a{float:left;width:16.5%;text-decoration:none;height:45px;font-size:12px;line-height:45px;text-align:center;background-color:#edebeb;margin:1px 1px 0 0;display:inline}
+.data-select a:hover,.data-select a.on{color:#fff;background-color:#563d7c;text-decoration:none;font-weight:bold;}@media (min-width:768px){.bs-glyphicons{margin-right:0;margin-left:0}
+/*比分*/
+.homegoal {text-align:center;margin-left:0px;padding-left: 0px;}
+.homegoal span{color: #fff;height:70px;display:block;font-size:70px;font-style: bold;line-height:70px;}
+.homegoal p{font-size: 25px;color: #fff;line-height: 1;margin: 0;}
+.visitgoal {float:right;text-align:center;padding-right: 0px;}
+.visitgoal span{color: #fff;height:70px;display:block;font-size:70px;font-style: bold;line-height:70px;margin:0px;}
+.visitgoal p{font-size: 25px;color: #fff;line-height: 1;margin: 0;}
+.goal  tr{text-align:center; } 
+.goal tr th{text-align:center; } 
+/*比赛*/
+.game {height:760px;margin: 50px 0 0 0px;background-image: url('../images/woven-basket-texture.png');}
+.choosedate {margin-top: 20px;text-align:center;}
+.year{position: absolute;top:27px;font-size:18px;font-weight: bold;}
+.date {padding: 0px;}
+.date a{width:18%;text-decoration:none;height:35px;font-size:14px;margin-left:-2px; margin-top:2px;margin-bottom:2px; line-height:35px;text-align:center;background-color:#edebeb;display:inline-block;}
+.date a:hover,.date a.on{color:#fff;background-color:#563d7c;text-decoration:none;font-weight:bold;}
+.teams_table {width:100%;text-align:center; background-color: #fbfbfb;}
+.gamecenter_content_r{float:right;width:auto;margin-top:20px;font-size: 12px;}
+.gamecenter_content_r .region_box{border:1px #efeff0 solid;padding:0px;}
+.gamecenter_content_r .region_box .tiltle .tiltle_a,.gamecenter_content_r .region_box .tiltle .tiltle_b,.gamecenter_content_r .region_box .tiltle .tiltle_c,.gamecenter_content_r .region_box .tiltle .tiltle_d{display:inline-block;height:32px;text-align:center;padding-top:8px;font:12px/1.5 \9ED1\4F53,Arial,sans-serif;font-size:16px; cursor: pointer;}
+.gamecenter_content_r .region_box .tiltle .tiltle_a{width:123px;background-color:#fbfbfb;border-right:1px #ececec solid}
+.gamecenter_content_r .region_box .tiltle .tiltle_b{width:125px;background-color:#f2f2f2;border-left:1px #fff solid; color: #999999}
+.gamecenter_content_r .region_box .tiltle .tiltle_c{font-size:12px;width:40px;background-color:#f2f2f2;border-right:1px #fff solid; color: #999999}
+.gamecenter_content_r .region_box .tiltle .tiltle_d{font-size:12px;width:40px;background-color:#f2f2f2; color: #999999}
+.gamecenter_content_r .region_box .itinerary_table{border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;width:100%;text-align:center}
+.gamecenter_content_r .region_box .itinerary_table tr {background-color:#fff}
+.gamecenter_content_r .region_box .itinerary_table tr.bg_a{background-color:#fbfbfb}
+.gamecenter_content_r .region_box .itinerary_table tr.on{font-weight:bold}
+.gamecenter_content_r .region_box .itinerary_table tr.bg_color{background-color:#fcfcfc}
+.gamecenter_content_r .region_box .itinerary_table th{vertical-align:baseline;text-align:left}
+.gamecenter_content_r .region_box .itinerary_table td{text-align:center;padding-left:8px}
+.gamecenter_content_r .region_box .itinerary_table td.center{text-align:center;padding-left:10px}
+.gamecenter_content_r .region_box .itinerary_table td .bg_box{display:inline-block;padding:2px 7px;background-color:#a92229;color:#fff}
+.gamecenter_content_r .region_box .border_red{height:2px;overflow:hidden;background-color:#a92229}
+.region_box h4{text-align: center;}
+/*球员对比*/
+.compareinput {text-align:center;padding-top: 50px;padding-bottom: 50px;}
+.compareinput img{border: 2px solid #ff6600}
+.compareinput .search{margin-bottom: 20px;}
+.compare {text-align:center;padding-top: 50px;padding-bottom: 50px;}
+.compare img{margin-top: 20px;}
+.compare button{margin-top: 15px;}
+.comparedata {padding-top: 20px;}
+.comparedata table{text-align: center;}
+.comparedata th{text-align: center;}
+/*分区对比*/
+.area {margin-top:150px;}
+.area .data-select{margin-left:0px;width:40%;text-align: center;}
+.area .data-select a{width: 20%;}
+
+
