@@ -231,15 +231,25 @@
       });
     </script>
     <!-- 球队阵容.ECharts单文件引入 -->
-    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script src="js/echarts.js"></script>
     <script type="text/javascript">
-      // 基于准备好的dom，初始化echarts图表
-      var myChart = echarts.init(document.getElementById('lineup-container')); 
+      require.config({
+            paths: {
+                echarts: './js/dist'
+            }
+        });
       // 获取lineup-container对象的高和宽
       var width = document.getElementById('lineup-container').offsetWidth;
       var height = document.getElementById('lineup-container').offsetHeight;
-      var option = {
-      title : {
+      require(
+            [
+                'echarts',
+                'echarts/chart/force',
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('lineup-container'));
+                var option = {
+                    title : {
           text: '',
           subtext: '',
           x:'right',
@@ -358,28 +368,11 @@
              
           }
       ]
-      };
-      // 为echarts对象加载数据 
-      myChart.setOption(option); 
-      var ecConfig = echarts.config;
-      function eConsole(param) {
-          // var mes = '【' + param.type + '】';
-          // if (typeof param.seriesIndex != 'undefined') {
-          //     mes += '  seriesIndex : ' + param.seriesIndex;
-          //     mes += '  dataIndex : ' + param.dataIndex;
-          // }
-          if(param.type == 'click')
-            window.location.href='PlayerInfo.html';
-          // console.log(param);
-      }     
-      // 允许的事件监听类型
-      myChart.on(ecConfig.EVENT.CLICK, eConsole);
-      myChart.on(ecConfig.EVENT.DBLCLICK, eConsole);
-      // myChart.on(ecConfig.EVENT.HOVER, eConsole);
-      // myChart.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
-      // myChart.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
-      // myChart.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
-      // myChart.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+                }
+                myChart.setOption(option);
+            }
+        );
+      
     </script>
     <!-- 球队数据 -->
     <script type="text/javascript">
