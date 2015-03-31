@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
     <link href="css/new.css" rel="stylesheet">
     <!-- Highchart图表JS库 -->
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
@@ -45,7 +46,7 @@
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group form-group-sm">
-              <input type="text" class="form-control" placeholder="搜索球员或者球队">
+              <input id="search" type="text" class="form-control" placeholder="搜索球员或者球队">
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right hidden-sm">
@@ -183,6 +184,9 @@
 
 
     </script>
+    <!-- 导航栏搜索匹配 -->
+    <script src="js/jquery-ui/jquery-ui.js"></script>
+    <script src="js/search-autocomplete.js"></script>
 	
 </body>
 </html>

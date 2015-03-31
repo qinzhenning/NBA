@@ -8,9 +8,13 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
     <link href="css/new.css" rel="stylesheet">
     <!-- Highchart图表JS库 -->
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/jquery-ui/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 	<script src="js/map/highmaps.js"></script>
 	<script src="js/map/data.js"></script>
 	<script type="text/javascript" src="js/highcharts/themes/sand-signika.js"></script>
@@ -46,7 +50,7 @@
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group form-group-sm">
-              <input type="text" class="form-control" placeholder="搜索球员或者球队">
+              <input id="search" type="text" class="form-control" placeholder="搜索球员或者球队">
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right hidden-sm">
@@ -109,102 +113,102 @@
 	                		color: 'white',
 	                		formatter: function () {
 	                			if(this.point.code == 'CA'){
-	                				var clippers = '<a href="TeamInfo.html"><img src="TeamsAvatar/clippers.png" width="90px" height="58px" style="position:absolute; left:-10px; top:20px;"></a>';
-	                				var lakers = '<a href="TeamInfo.html"><img src="TeamsAvatar/lakers.png" width="90px" height="58px" style="position:absolute; left:-40px; top:-40px;"></a>';
-	                				var warriors = '<a href="TeamInfo.html"><img src="TeamsAvatar/warriors.png" width="67px" height="82px" style="position:absolute; left:-80px; top:-120px;"></a>';
-	                				var kings = '<a href="TeamInfo.html"><img src="TeamsAvatar/kings.png" width="67px" height="82px" style="position:absolute; left:-80px; top:-210px;"></a>';
+	                				var clippers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="洛杉矶-快船队" src="TeamsAvatar/clippers.png"  width="90px" height="58px" style="position:absolute; left:-10px; top:20px;"></a>';
+	                				var lakers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="洛杉矶-湖人队" src="TeamsAvatar/lakers.png" width="90px" height="58px" style="position:absolute; left:-40px; top:-40px;"></a>';
+	                				var warriors = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="金州-勇士队" src="TeamsAvatar/warriors.png" width="67px" height="82px" style="position:absolute; left:-80px; top:-120px;"></a>';
+	                				var kings = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="萨克拉门托-国王队" src="TeamsAvatar/kings.png" width="67px" height="82px" style="position:absolute; left:-80px; top:-210px;"></a>';
 	                        		return lakers+clippers+warriors+kings;
 	                        	}
 	                        	else if(this.point.code == 'OR'){
-	                        		var blazers = '<a href="TeamInfo.html"><img src="TeamsAvatar/blazers.png" width="67px" height="82px" style="position:absolute; left:-10px; top:-60px;"></a>';
+	                        		var blazers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="波特兰-开拓者队" src="TeamsAvatar/blazers.png" width="67px" height="82px" style="position:absolute; left:-10px; top:-60px;"></a>';
 	                        		return blazers;
 	                			}
 	                			else if(this.point.code == 'UT'){
-	                        		var blazers = '<a href="TeamInfo.html"><img src="TeamsAvatar/jazz.png" width="90px" height="40px" style="position:absolute; left:-40px; top:-30px;"></a>';
-	                        		return blazers;
+	                        		var jazz = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="犹他-爵士队" src="TeamsAvatar/jazz.png" width="90px" height="40px" style="position:absolute; left:-40px; top:-30px;"></a>';
+	                        		return jazz;
 	                			}
 	                			else if(this.point.code == 'AZ'){
-	                        		var suns = '<a href="TeamInfo.html"><img src="TeamsAvatar/suns.png" width="90px" height="90px" style="position:absolute; left:-40px; top:-40px;"></a>';
+	                        		var suns = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="菲尼克斯-太阳队" src="TeamsAvatar/suns.png" width="90px" height="90px" style="position:absolute; left:-40px; top:-40px;"></a>';
 	                        		return suns;
 	                			}
 	                			else if(this.point.code == 'CO'){
-	                        		var nuggets = '<a href="TeamInfo.html"><img src="TeamsAvatar/nuggets.png" width="90px" height="60px" style="position:absolute; left:-40px; top:-40px;"></a>';
+	                        		var nuggets = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="丹佛-掘金队" src="TeamsAvatar/nuggets.png" width="90px" height="60px" style="position:absolute; left:-40px; top:-40px;"></a>';
 	                        		return nuggets;
 	                			}
 	                			else if(this.point.code == 'OK'){
-	                        		var thunder = '<a href="TeamInfo.html"><img src="TeamsAvatar/thunder.png" width="90px" height="80px" style="position:absolute; left:-50px; top:-40px;"></a>';
+	                        		var thunder = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="俄克拉荷马-雷霆队" src="TeamsAvatar/thunder.png" width="90px" height="80px" style="position:absolute; left:-50px; top:-40px;"></a>';
 	                        		return thunder;
 	                			}
 	                			else if(this.point.code == 'TX'){
-	                        		var mavericks = '<a href="TeamInfo.html"><img src="TeamsAvatar/mavericks.png" width="90px" height="80px" style="position:absolute; left:-60px; top:-60px;"></a>';
-	                        		var rockets = '<a href="TeamInfo.html"><img src="TeamsAvatar/rockets.png" width="140px" height="75px" style="position:absolute; left:-10px; top:10px;"></a>';
-	                        		var spurs = '<a href="TeamInfo.html"><img src="TeamsAvatar/spurs.png" width="110px" height="58px" style="position:absolute; left:-120px; top:20px;"></a>';
+	                        		var mavericks = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="达拉斯-小牛队" src="TeamsAvatar/mavericks.png" width="90px" height="80px" style="position:absolute; left:-60px; top:-60px;"></a>';
+	                        		var rockets = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="休斯顿-火箭队" src="TeamsAvatar/rockets.png" width="140px" height="75px" style="position:absolute; left:-10px; top:10px;"></a>';
+	                        		var spurs = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="圣安东尼奥-马刺队" src="TeamsAvatar/spurs.png" width="110px" height="58px" style="position:absolute; left:-120px; top:20px;"></a>';
 	                        		return mavericks+rockets+spurs;
 	                			}
 	                			else if(this.point.code == 'LA'){
-	                        		var pelicans = '<a href="TeamInfo.html"><img src="TeamsAvatar/pelicans.png" width="90px" height="66px" style="position:absolute; left:-30px; top:-50px;"></a>';
+	                        		var pelicans = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="新奥尔良-鹈鹕队" src="TeamsAvatar/pelicans.png" width="90px" height="66px" style="position:absolute; left:-30px; top:-50px;"></a>';
 	                        		return pelicans;
 	                			}
 	                			else if(this.point.code == 'MN'){
-	                        		var timberwolves = '<a href="TeamInfo.html"><img src="TeamsAvatar/timberwolves.png" width="90px" height="66px" style="position:absolute; left:-40px; top:-50px;"></a>';
+	                        		var timberwolves = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="明尼苏达-森林狼队" src="TeamsAvatar/timberwolves.png" width="90px" height="66px" style="position:absolute; left:-40px; top:-50px;"></a>';
 	                        		return timberwolves;
 	                			}
 	                			else if(this.point.code == 'WI'){
-	                        		var bucks = '<a href="TeamInfo.html"><img src="TeamsAvatar/bucks.png" width="75px" height="104px" style="position:absolute; left:-20px; top:-40px;"></a>';
+	                        		var bucks = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="密尔沃基-雄鹿队" src="TeamsAvatar/bucks.png" width="75px" height="104px" style="position:absolute; left:-20px; top:-40px;"></a>';
 	                        		return bucks;
 	                			}
 	                			else if(this.point.code == 'IL'){
-	                        		var bulls = '<a href="TeamInfo.html"><img src="TeamsAvatar/bulls.png" width="75px" height="90px" style="position:absolute; left:-40px; top:-50px;"></a>';
+	                        		var bulls = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="芝加哥-公牛队" src="TeamsAvatar/bulls.png" width="75px" height="90px" style="position:absolute; left:-40px; top:-50px;"></a>';
 	                        		return bulls;
 	                			}
 	                			else if(this.point.code == 'MI'){
-	                        		var pistons = '<a href="TeamInfo.html"><img src="TeamsAvatar/pistons.png" width="90px" height="76px" style="position:absolute; left:-40px; top:-50px;"></a>';
+	                        		var pistons = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="底特律-活塞队" src="TeamsAvatar/pistons.png" width="90px" height="76px" style="position:absolute; left:-40px; top:-50px;"></a>';
 	                        		return pistons;
 	                			}
 	                			else if(this.point.code == 'IN'){
-	                        		var pacers = '<a href="TeamInfo.html"><img src="TeamsAvatar/pacers.png" width="75px" height="65px" style="position:absolute; left:-30px; top:-20px;"></a>';
+	                        		var pacers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="印第安纳-步行者队" src="TeamsAvatar/pacers.png" width="75px" height="65px" style="position:absolute; left:-30px; top:-20px;"></a>';
 	                        		return pacers;
 	                			}
 	                			else if(this.point.code == 'OH'){
-	                        		var cavaliers = '<a href="TeamInfo.html"><img src="TeamsAvatar/cavaliers.png" width="96px" height="51px" style="position:absolute; left:-50px; top:-50px;"></a>';
+	                        		var cavaliers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="克里夫兰-骑士队" src="TeamsAvatar/cavaliers.png" width="96px" height="51px" style="position:absolute; left:-50px; top:-50px;"></a>';
 	                        		return cavaliers;
 	                			}
 	                			else if(this.point.code == 'TN'){
-	                        		var grizzlies = '<a href="TeamInfo.html"><img src="TeamsAvatar/grizzlies.png" width="80px" height="104px" style="position:absolute; left:-40px; top:-40px;"></a>';
+	                        		var grizzlies = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="孟菲斯-灰熊队" src="TeamsAvatar/grizzlies.png" width="80px" height="104px" style="position:absolute; left:-40px; top:-40px;"></a>';
 	                        		return grizzlies;
 	                			}
 	                			else if(this.point.code == 'NY'){
-	                        		var raptors = '<a href="TeamInfo.html"><img src="TeamsAvatar/raptors.png" width="90px" height="80px" style="position:absolute; left:-90px; top:-90px;"></a>';
-	                        		var knicks = '<a href="TeamInfo.html"><img src="TeamsAvatar/knicks.png" width="90px" height="72px" style="position:absolute; left:70px; top:30px;"></a>';
+	                        		var raptors = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="多伦多-猛龙队" src="TeamsAvatar/raptors.png" width="90px" height="80px" style="position:absolute; left:-90px; top:-90px;"></a>';
+	                        		var knicks = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="纽约-尼克斯队" src="TeamsAvatar/knicks.png" width="90px" height="72px" style="position:absolute; left:70px; top:30px;"></a>';
 	                        		return raptors+knicks;
 	                			}
 	                			else if(this.point.code == 'MA'){
-	                        		var celtics = '<a href="TeamInfo.html"><img src="TeamsAvatar/celtics.png" width="80px" height="90px" style="position:absolute; left:-30px; top:-100px;"></a>';
+	                        		var celtics = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="波士顿-凯尔特人队" src="TeamsAvatar/celtics.png" width="80px" height="90px" style="position:absolute; left:-30px; top:-100px;"></a>';
 	                        		return celtics;
 	                			}
 	                			else if(this.point.code == 'NJ'){
-	                        		var nets = '<a href="TeamInfo.html"><img src="TeamsAvatar/nets.png" width="70px" height="92px" style="position:absolute; left:-30px; top:-90px;"></a>';
+	                        		var nets = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="布鲁克林-篮网队" src="TeamsAvatar/nets.png" width="70px" height="92px" style="position:absolute; left:-30px; top:-90px;"></a>';
 	                        		return nets;
 	                			}
 	                			else if(this.point.code == 'PA'){
-	                        		var ers = '<a href="TeamInfo.html"><img src="TeamsAvatar/76ers.png" width="67px" height="82px" style="position:absolute; left:-40px; top:-50px;"></a>';
+	                        		var ers = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="费城-76人队" src="TeamsAvatar/76ers.png" width="67px" height="82px" style="position:absolute; left:-40px; top:-50px;"></a>';
 	                        		return ers;
 	                			}
 	                			else if(this.point.code == 'VA'){
-	                        		var wizards = '<a href="TeamInfo.html"><img src="TeamsAvatar/wizards.png" width="90px" height="80px" style="position:absolute; left:-10px; top:-40px;"></a>';
+	                        		var wizards = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="华盛顿-奇才队" src="TeamsAvatar/wizards.png" width="90px" height="80px" style="position:absolute; left:-10px; top:-40px;"></a>';
 	                        		return wizards;
 	                			}
 	                			else if(this.point.code == 'NC'){
-	                        		var bobcats = '<a href="TeamInfo.html"><img src="TeamsAvatar/bobcats.png" width="90px" height="82px" style="position:absolute; left:-70px; top:-10px;"></a>';
+	                        		var bobcats = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="夏洛特-山猫队" src="TeamsAvatar/bobcats.png" width="90px" height="82px" style="position:absolute; left:-70px; top:-10px;"></a>';
 	                        		return bobcats;
 	                			}
 	                			else if(this.point.code == 'GA'){
-	                        		var hawks = '<a href="TeamInfo.html"><img src="TeamsAvatar/hawks.png" width="104px" height="56px" style="position:absolute; left:-40px; top:-10px;"></a>';
+	                        		var hawks = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="亚特兰大-老鹰队" src="TeamsAvatar/hawks.png" width="104px" height="56px" style="position:absolute; left:-40px; top:-10px;"></a>';
 	                        		return hawks;
 	                			}
 	                			else if(this.point.code == 'FL'){
-	                        		var magic = '<a href="TeamInfo.html"><img src="TeamsAvatar/magic.png" width="90px" height="66px" style="position:absolute; left:-100px; top:-60px;"></a>';
-	                        		var heat = '<a href="TeamInfo.html"><img src="TeamsAvatar/heat.png" width="90px" height="124px" style="position:absolute; left:0px; top:-60px;"></a>';
+	                        		var magic = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="奥兰多-魔术队" src="TeamsAvatar/magic.png" width="90px" height="66px" style="position:absolute; left:-100px; top:-60px;"></a>';
+	                        		var heat = '<a href="TeamInfo.html"><img data-toggle="tooltip" data-placement="top" title="迈阿密-热火队" src="TeamsAvatar/heat.png" width="90px" height="124px" style="position:absolute; left:0px; top:-60px;"></a>';
 	                        		return magic+heat;
 
 	                			}
@@ -366,6 +370,12 @@
 	});
 	</script>
 	<script type="text/javascript">
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip({
+		  	delay: { "show": 400, "hide": 0 },
+		  	animation: false
+		  	});
+	});
 	$(function(){
 	var imgWid = 0 ;
 	var imgHei = 0 ; //变量初始化
@@ -382,5 +392,7 @@
 	},function(){$(this).find("img").stop().animate({"width":imgWid,"height":imgHei,"margin-left":0,"margin-top":0,"z-index":1});});
 	})
 </script>
+    <!-- 导航栏搜索匹配 -->
+    <script src="js/search-autocomplete.js"></script>
 </body>
 </html>

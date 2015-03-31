@@ -87,5 +87,19 @@
 .area {margin-top:150px;}
 .area .data-select{margin-left:0px;width:40%;text-align: center;}
 .area .data-select a{width: 20%;}
+/*导航栏搜索框*/
+.ui-autocomplete {
+	font-weight: bold;
+	margin: 3em 0 .2em;
+	line-height: 1;
+	max-height: 200px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	z-index:10000;
+}
+.auto-search span{
+	float: right;
+}
 
 
